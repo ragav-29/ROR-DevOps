@@ -4,17 +4,19 @@ services:
     build: .
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
     depends_on:
       - db
-    env_file:
-      - .env  # Specify the path to your .env file
-  db:
-    image: postgres:14.1
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=Budgy
-      - POSTGRES_PASSWORD=Budgy
-      - POSTGRES_DB=budgy_development
+      RAILS_ENV: development
+      DATABASE_URL: postgresql://devops_user:devops_password@db:5432/devops_development
+    volumes:
+      - .:/app
+  
+  db:
+    image: postgres:14.11
+    environment:
+      POSTGRES_DB: devops_development
+      POSTGRES_USER: devops_user
+      POSTGRES_PASSWORD: devops_password
+    ports:
+      - "5432:5432"
