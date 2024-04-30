@@ -187,7 +187,7 @@ metadata:
   name: ror-devops-web-ingress
 spec:
   rules:
-  - host: 100.25.23.155  # Replace with your actual hostname
+  - host: 100.27.3.153  # Replace with your actual hostname
     http:
       paths:
       - pathType: Prefix
