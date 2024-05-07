@@ -14,14 +14,11 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: ragav029596/budgetapp:ror-devops-web
-          env:
-            - name: POSTGRES_DB
-              value: devops_development
-            - name: POSTGRES_USER
-              value: devops_user
-            - name: POSTGRES_PASSWORD
-              value: devops_password
+          image: postgres:14.11
+          environment:
+            POSTGRES_DB: devops_development
+            POSTGRES_USER: devops_user
+            POSTGRES_PASSWORD: devops_password
           ports:
             - containerPort: 5432
 ---
@@ -35,4 +32,3 @@ spec:
   ports:
     - protocol: TCP
       port: 5432
-      targetPort: 5432
